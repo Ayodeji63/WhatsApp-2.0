@@ -24,6 +24,7 @@ let friendMess;
 let arrowIcon;
 let bxFont;
 let objIcon;
+let sendBtn;
 
 
 
@@ -39,14 +40,15 @@ pageBody.addEventListener('click', (e) => {
   changeactive(e)
 })
 
-document.addEventListener('keydown', (e) => {
-  if (e.code ==="Enter") {
-    createSent(chatInput.value, getTime());
-    chatInput.value = "";
-    createReply(randomMess(), getTime());
-  }
 
-});
+// document.addEventListener('keydown', (e) => {
+//   if (e.code ==="Enter") {
+//     createSent(chatInput.value, getTime());
+//     chatInput.value = "";
+//     createReply(randomMess(), getTime());
+//   }
+
+// });
 
 
 
@@ -127,8 +129,7 @@ function displayMessage(forms) {
              <input type="text" placeholder="Type a message">
             </div>
             <div class="mic-icon">
-            <i class='bx bxs-microphone obj'></i>
-            <i class='bx bxs-send hidden obj'></i>
+            <i class='bx bxs-send'></i>
             </div>
         </div>
     </div>`;
@@ -142,6 +143,7 @@ function displayMessage(forms) {
        arrow = document.querySelector('.arrow'),
        icon = document.querySelectorAll('.obj');
        
+      sendBtn = document.querySelector('.mic-icon');
     
        
        chatBody = Body;
@@ -149,6 +151,12 @@ function displayMessage(forms) {
        typing = pageText;
        objIcon = icon;
        arrow.addEventListener('click', showMenu)
+
+       sendBtn.addEventListener('click', () => {
+        createSent(chatInput.value, getTime());
+          chatInput.value = "";
+          createReply(randomMess(), getTime());
+      })
       
     })
    
